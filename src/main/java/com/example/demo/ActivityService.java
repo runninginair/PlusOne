@@ -9,6 +9,10 @@ public class ActivityService {
     @Autowired
     private ActivityRepository activityRepository;
 
+    public Activity getActivityById(long uid) {
+        return activityRepository.findById(uid).get();
+    }
+
     public List<Activity> getAllActivities() {
         return (List<Activity>) activityRepository.findAll();
     }
