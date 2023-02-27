@@ -14,7 +14,7 @@ public class UserController {
 
   @GetMapping("/user/{uid}")
   public User plusOne(@PathVariable("uid") long userId){
-    System.out.println(userId);
+//    System.out.println(userId);
 //        Activity activity = activityRepository.findById(uid).get();
     User user = userService.getUserById(userId);
     return user;
