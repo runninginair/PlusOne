@@ -1,5 +1,7 @@
-package com.example.demo;
+package com.example.services;
 
+import com.example.model.Activity;
+import com.example.repository.ActivityRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,4 +22,6 @@ public class ActivityService {
     public void saveActivity(Activity activity) {
         activityRepository.save(activity);
     }
+
+
 }
