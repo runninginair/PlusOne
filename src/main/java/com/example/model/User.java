@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.model;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -33,6 +33,11 @@ public class User {
     @Column(name = "user_type")
     private Integer userType;
 
+    @Column(name = "height")
+    private Double height;
+
+    @Column(name = "weight")
+    private Double weight;
     // getters and setters
 
     public Long getUserId() {
@@ -91,5 +96,19 @@ public class User {
         this.userType = userType;
     }
 
+    public Double getHeight() {
+        return height;
+    }
 
+    public void setHeight(Double height) {
+        this.height = height;
+    }
+
+    public Double getWeight() {
+        return weight;
+    }
+
+    public void setWeight(Double weight) {
+        this.weight = weight;
+    }
 }
