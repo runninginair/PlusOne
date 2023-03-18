@@ -9,29 +9,30 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.util.Date;
+import org.springframework.lang.NonNull;
 //import javax.persistence.*;
 
-//@Entity
 @Entity
-//@Table(name = "activity")
 @Table(name = "activity")
 public class Activity {
 
     @Id
-    //@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NonNull
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User userId;
 
+    @NonNull
     @Column(name = "date")
     private Date date;
 
     @Column(name = "group_name")
     private String groupName;
 
+    @NonNull
     @Column(name = "activity_name")
     private String activityName;
 
@@ -47,9 +48,16 @@ public class Activity {
     @Column(name = "duration")
     private Double duration;
 
+    public Activity() {
+    }
+
+    public Activity(@NonNull User userId, @NonNull Date date, @NonNull String activityName) {
+        this.userId = userId;
+        this.date = date;
+        this.activityName = activityName;
+    }
+
     // getters and setters
-
-
     public User getUserId() {
         return userId;
     }
