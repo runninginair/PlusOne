@@ -4,9 +4,9 @@ spring:
       ddl-auto: update
     show-sql: true
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/${DB_NAME:plusone}
+    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/${DB_NAME:PlusOne}
     username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:123456}
+    password: ${DB_PASSWORD:password}
     driver-class-name: com.mysql.cj.jdbc.Driver
   servlet:
     multipart:

@@ -21,4 +21,18 @@ public class UserController {
     User user = userService.getUserById(userId);
     return user;
   }
+
+  @GetMapping("/delete/{userName}")
+  public String deleteUser(@PathVariable("userName")String userName){
+    try{
+      int num = userService.deleteUser(userName);
+      if (num>-1){
+        return "Delete user successfully！";
+      }else {
+        return "Failed to delete user！";
+      }
+    }catch (Exception e){
+      return "Failed to delete user！";
+    }
+  }
 }
