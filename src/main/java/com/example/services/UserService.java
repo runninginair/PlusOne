@@ -15,8 +15,26 @@ public class UserService {
     return userRepository.findById(userId).get();
   }
 
+  /**
+   * get User by user name
+   * Tao Jin
+   * */
+  public User getUserByUsername(String username) {
+    return userRepository.getUserByUserName(username);
+  }
+
   public void saveUser(User user) {
     userRepository.save(user);
+  }
+
+  public int deleteUser(String userName){return userRepository.deleteUserByUserName(userName);}
+
+  /**
+   * update new Height by user ID
+   * Tao Jin
+   * */
+  public Double updateHeight(Long userID, Double newHeight) {
+    return userRepository.updateUserHeight(userID, newHeight);
   }
 
 }

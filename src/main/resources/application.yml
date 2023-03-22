@@ -6,7 +6,7 @@ spring:
   datasource:
     url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/${DB_NAME:plusone}
     username: ${DB_USERNAME:root}
-    password: ${DB_PASSWORD:123456}
+    password: ${DB_PASSWORD:JasonKim891214}
     driver-class-name: com.mysql.cj.jdbc.Driver
   servlet:
     multipart:

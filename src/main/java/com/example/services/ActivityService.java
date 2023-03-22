@@ -39,4 +39,12 @@ public class ActivityService {
     }
 
 
+    public double getDistanceByTimeRange(Long userId, Date start, Date end){
+        return activityRepository.getDistanceByTimeRange(userId,start,end);
+    }
+
+    public double getCaloriesByTimeRange(Long userId, Date start, Date end){
+        return activityRepository.getCaloriesByTimeRange(userId,start,end);
+    }
+
 }
