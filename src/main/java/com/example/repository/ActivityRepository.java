@@ -11,4 +11,5 @@ import org.springframework.stereotype.Repository;
 public interface ActivityRepository extends CrudRepository<Activity, Long> {
 
   public List<Activity> findByUserIdAndDate(User user, Date date);
-}
+
+ }

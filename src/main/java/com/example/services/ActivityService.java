@@ -37,6 +37,4 @@ public class ActivityService {
     public void saveActivity(Activity activity) {
         activityRepository.save(activity);
     }
-
-
 }
