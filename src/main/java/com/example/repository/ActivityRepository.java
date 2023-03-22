@@ -15,7 +15,9 @@ import org.springframework.stereotype.Repository;
 public interface ActivityRepository extends CrudRepository<Activity, Long> {
   //@Transactional
   public List<Activity> findByUserIdAndDate(User user, Date date);
+
   @Transactional
   @Query(nativeQuery = true,value = "select sum(distance) from activity a where a.user_id = :userId and a.date between :start and :end")
   public double getDistanceByTimeRange(@Param("userId") Long userId, @Param("start")Date start, @Param("end")Date end);
 }
+
