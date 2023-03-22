@@ -90,5 +90,10 @@ public class ActivityController {
     return true;
   }
 
+    @GetMapping("/activity/getDistanceByTimeRange/{userId}/{start}/{end}")
+    public double getDistanceByTimeRange(@PathVariable("userId")Long userId, @PathVariable("start")Date start, @PathVariable("end")Date end){
+        return activityService.getDistanceByTimeRange(userId,start,end);
+    }
+
 
 }
