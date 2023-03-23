@@ -20,10 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class ActivityController {
-
-//    @Autocwired
-////    ActivityRepository ativityRepository;
-
+  
   @Autowired
   ActivityService activityService = new ActivityService();
 
@@ -58,37 +55,5 @@ public class ActivityController {
     activityService.saveActivity(activity);
     return new ResponseEntity<>(activity, HttpStatus.CREATED);
   }
-
-  /**
-   * create a new activity by userid, date, activity name
-   *
-   * @param uid
-   * @param dateString
-   * @param activityName
-   */
-  @GetMapping("/activity/create/{userid}/date/{date}/name/{name}")
-  public boolean createActivity(@PathVariable("userid") long uid,
-      @PathVariable("date") String dateString, @PathVariable("name") String activityName) {
-//        System.out.println("uid = " + uid + ", date = " + date);
-    User user = userService.getUserById(uid);
-    if (user == null) {
-      return false;
-    }
-    try {
-
-      Date date = Date.valueOf(dateString);
-      Activity activity = new Activity(user, date, activityName);
-//            if (activityService.findActivityByUserIdAndDateAndActivityName(uid, date, activityName)) {
-//                return false;
-//            }
-      activityService.saveActivity(activity);
-
-    } catch (IllegalArgumentException e) {
-      System.out.println("Invalid date format: " + dateString);
-      return false;
-    }
-    return true;
-  }
-
 
 }
