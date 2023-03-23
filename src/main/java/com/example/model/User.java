@@ -38,6 +38,21 @@ public class User {
 
     @Column(name = "weight")
     private Double weight;
+
+    public User() {
+    }
+
+    public User(Long userId) {
+        this.userId = userId;
+    }
+
+    public User(Long userId, String password, String userName, Integer userType) {
+        this.userId = userId;
+        this.password = password;
+        this.userName = userName;
+        this.userType = userType;
+    }
+
     // getters and setters
 
     public Long getUserId() {
