@@ -37,4 +37,9 @@ public class ActivityService {
     public void saveActivity(Activity activity) {
         activityRepository.save(activity);
     }
+
+    public double getDistanceByTimeRange(Long userId, Date start, Date end){
+        return activityRepository.getDistanceByTimeRange(userId,start,end);
+    }
+
 }

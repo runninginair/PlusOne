@@ -43,6 +43,9 @@ public class ActivityController {
     return activities;
   }
 
+  /**
+   * create a new activity by userid, date, activity name
+   */
   @PostMapping(path = "/activities", consumes = MediaType.APPLICATION_JSON_VALUE, produces = {
       MediaType.APPLICATION_JSON_VALUE,
       MediaType.APPLICATION_XML_VALUE})
@@ -54,6 +57,12 @@ public class ActivityController {
     }
     activityService.saveActivity(activity);
     return new ResponseEntity<>(activity, HttpStatus.CREATED);
+  }
+
+  @GetMapping("/activity/getDistanceByTimeRange/{userId}/{start}/{end}")
+  public double getDistanceByTimeRange(@PathVariable("userId")Long userId, @PathVariable("start")Date start,
+      @PathVariable("end")Date end){
+      return activityService.getDistanceByTimeRange(userId,start,end);
   }
 
 }

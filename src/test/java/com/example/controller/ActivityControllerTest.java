@@ -11,6 +11,7 @@ import com.example.model.User;
 import com.example.services.ActivityService;
 import com.example.services.UserService;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -45,8 +46,6 @@ class ActivityControllerTest {
   void setUp() {
     mockMvc = MockMvcBuilders.standaloneSetup(activityController).build();
   }
-
-
 
   @Test
   public void testGetActivitiesByUserIdAndDate() {
@@ -105,5 +104,23 @@ class ActivityControllerTest {
 
     // assert that the activity object returned by the create method is the same as the activity object passed as parameter
     assertEquals(activity, responseEntity.getBody());
+  }
+
+  @Test
+  public void getDistanceByTimeRange() {
+    Long userId = 1l;
+    Date start = Date.valueOf("2013-02-10");
+    Date end = Date.valueOf("2013-02-11");
+
+    double mockTotalDistance = 101733.0;
+    Mockito.when(activityService.getDistanceByTimeRange(userId, start,end)).thenReturn(mockTotalDistance);
+
+    // Call the method to be tested
+    double total = activityController.getDistanceByTimeRange(userId, start, end);
+
+    // Verify the result
+    assertEquals(mockTotalDistance, total, 2);
+    Mockito.verify(activityService).getDistanceByTimeRange(userId, start,end);
+
   }
 }
