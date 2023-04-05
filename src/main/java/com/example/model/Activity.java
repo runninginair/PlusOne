@@ -131,4 +131,3 @@ public class Activity {
         this.duration = duration;
     }
 }
-

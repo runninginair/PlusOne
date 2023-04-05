@@ -1,8 +1,5 @@
 package com.example.controller;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
-
 import com.example.model.User;
 import com.example.services.UserService;
 import org.junit.jupiter.api.BeforeEach;
@@ -10,41 +7,67 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.mockito.junit.jupiter.MockitoExtension;
 
-@ExtendWith(SpringExtension.class)
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.mockito.Mockito.*;
+
+@ExtendWith(MockitoExtension.class)
 class UserControllerTest {
 
-  @Mock
-  private UserService userService;
+    @Mock
+    private UserService userService;
 
-  @InjectMocks
-  private UserController userController;
+    @InjectMocks
+    private UserController userController;
 
-  private MockMvc mockMvc;
+    private User user;
 
-  @BeforeEach
-  void setUp() {
-    mockMvc = MockMvcBuilders.standaloneSetup(userController).build();
-  }
+    @BeforeEach
+    void setUp() {
+        user = new User();
+        user.setUserId(1L);
+        user.setUserName("testuser");
+        user.setHeight(170.0);
+    }
 
-  @Test
-  void plusOne() {
-    Long userId = 1l;
-    User mockUser = new User(userId);
+    @Test
+    void getUserById() {
+        when(userService.getUserById(1L)).thenReturn(user);
 
-    Mockito.when(userService.getUserById(userId)).thenReturn(mockUser);
+        User result = userController.plusOne(1L);
 
-    User user = userController.plusOne(userId);
-    assertEquals(mockUser, user);
-    Mockito.verify(userService).getUserById(userId);
-  }
+        assertEquals(user, result);
+        verify(userService).getUserById(1L);
+    }
 
-  @Test
-  void deleteUser() {
-    
-  }
+    @Test
+    void deleteUser() {
+        when(userService.deleteUser("testuser")).thenReturn(1);
+
+        String result = userController.deleteUser("testuser");
+
+        assertEquals("Delete user successfully！", result);
+        verify(userService).deleteUser("testuser");
+    }
+
+    @Test
+    void getUserByUsername() {
+        when(userService.getUserByUsername("testuser")).thenReturn(user);
+
+        String result = userController.getUserByUsername("testuser");
+
+        assertEquals("Find the user！", result);
+        verify(userService).getUserByUsername("testuser");
+    }
+
+    @Test
+    void updateNewHeightByUserID() {
+        when(userService.getUserById(1L)).thenReturn(user);
+
+        String result = userController.updateNewHeightByUserID(1L, 180.0);
+
+        assertEquals("User height updated successfully", result);
+        verify(userService).getUserById(1L);
+    }
 }
