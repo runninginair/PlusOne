@@ -33,8 +33,8 @@ public class UserService {
    * update new Height by user ID
    * Tao Jin
    * */
-  public Double updateHeight(Long userID, Double newHeight) {
-    return userRepository.updateUserHeight(userID, newHeight);
+  public void updateHeight(Long userID, Double newHeight) {
+    userRepository.updateUserHeight(userID, newHeight);
   }
 
 }

@@ -16,5 +16,5 @@ public interface UserRepository extends CrudRepository<User, Long> {
     @Transactional
     @Modifying
     @Query("UPDATE User u SET u.height = :newHeight WHERE u.userId = :userID")
-    Double updateUserHeight(Long userID, Double newHeight);
+    void updateUserHeight(Long userID, Double newHeight);
 }
