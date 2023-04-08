@@ -57,7 +57,7 @@ public class UserController {
   public String updateNewHeightByUserID(@PathVariable("userID") Long UserID, @PathVariable("newHeight") Double newHeight) {
     User userToUpdate = userService.getUserById(UserID);
     if (userToUpdate != null){
-      userToUpdate.setHeight(newHeight);
+      userService.updateHeight(UserID, newHeight);
       return "User height updated successfully";
     }
     else{
