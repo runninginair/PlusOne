@@ -37,4 +37,8 @@ public class UserService {
     userRepository.updateUserHeight(userID, newHeight);
   }
 
+  public void updateWeight(Long userID, Double newWeight) {
+    userRepository.updateUserWeight(userID, newWeight);
+  }
+
 }
