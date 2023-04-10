@@ -68,7 +68,7 @@ public class ActivityController {
         return activityService.getDistanceByTimeRange(userId,start,end);
     }
 
-    @GetMapping("/activity/getCaloriesyTimeRange/{userId}/{start}/{end}")
+    @GetMapping("/activity/getCaloriesByTimeRange/{userId}/{start}/{end}")
     public double getCaloriesByTimeRange(@PathVariable("userId")Long userId, @PathVariable("start")Date start, @PathVariable("end")Date end){
         return activityService.getCaloriesByTimeRange(userId,start,end);
     }
