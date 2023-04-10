@@ -24,7 +24,7 @@ public class UserController {
     return user;
   }
 
-  @GetMapping("/delete/{userName}")
+  @GetMapping("/deleteUserByUserName/{userName}")
   public String deleteUser(@PathVariable("userName") String userName) {
     try {
       int num = userService.deleteUser(userName);
@@ -38,7 +38,7 @@ public class UserController {
     }
   }
 
-  @GetMapping("/getuserbyusername/{userName}")
+  @GetMapping("/getUserByUsername/{userName}")
   public String getUserByUsername(@PathVariable("userName") String userName) {
     try {
       User user = userService.getUserByUsername(userName);
@@ -53,7 +53,7 @@ public class UserController {
   }
 
 
-  @PutMapping("/updateNewHeightbyUserID/{userID}/{newHeight}")
+  @PutMapping("/updateHeightByUserID/{userID}/{newHeight}")
   public String updateNewHeightByUserID(@PathVariable("userID") Long UserID, @PathVariable("newHeight") Double newHeight) {
     User userToUpdate = userService.getUserById(UserID);
     if (userToUpdate != null){
@@ -65,6 +65,17 @@ public class UserController {
     }
   }
 
+  @PutMapping("/updateWeightByUserID/{userID}/{newWeight}")
+  public String updateNewWeightByUserID(@PathVariable("userID") Long UserID, @PathVariable("newWeight") Double newWeight) {
+    User userToUpdate = userService.getUserById(UserID);
+    if (userToUpdate != null){
+      userService.updateWeight(UserID, newWeight);
+      return "User weight updated successfully";
+    }
+    else{
+      return "Sorry, User not found";
+    }
+  }
 
 
 }
