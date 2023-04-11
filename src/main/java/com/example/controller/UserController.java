@@ -4,10 +4,7 @@ import com.example.repository.UserRepository;
 import com.example.services.UserService;
 import com.example.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
@@ -24,7 +21,7 @@ public class UserController {
     return user;
   }
 
-  @GetMapping("/deleteUserByUserName/{userName}")
+  @DeleteMapping("/deleteUserByUserName/{userName}")
   public String deleteUser(@PathVariable("userName") String userName) {
     try {
       int num = userService.deleteUser(userName);
