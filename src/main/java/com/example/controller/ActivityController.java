@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -44,7 +45,7 @@ public class ActivityController {
      * @param dateString
      * @param activityName
      */
-    @GetMapping("/activity/create/{userid}/date/{date}/name/{name}")
+    @PostMapping("/activity/create/{userid}/date/{date}/name/{name}")
     public boolean createActivity(@PathVariable("userid") long uid, @PathVariable("date") String dateString, @PathVariable("name") String activityName){
 //        System.out.println("uid = " + uid + ", date = " + date);
         User user = userService.getUserById(uid);
