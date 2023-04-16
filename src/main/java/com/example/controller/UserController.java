@@ -8,19 +8,19 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
+  public static final String PLUS1_FRONTEND_API = "http://localhost:3000";
 
   @Autowired
   UserService userService = new UserService();
 
-
+  @CrossOrigin(origins = PLUS1_FRONTEND_API)
   @GetMapping("/user/{uid}")
   public User plusOne(@PathVariable("uid") long userId) {
-//    System.out.println(userId);
-//        Activity activity = activityRepository.findById(uid).get();
     User user = userService.getUserById(userId);
     return user;
   }
 
+  @CrossOrigin(origins = PLUS1_FRONTEND_API)
   @DeleteMapping("/deleteUserByUserName/{userName}")
   public String deleteUser(@PathVariable("userName") String userName) {
     try {
@@ -35,6 +35,7 @@ public class UserController {
     }
   }
 
+  @CrossOrigin(origins = PLUS1_FRONTEND_API)
   @GetMapping("/getUserByUsername/{userName}")
   public String getUserByUsername(@PathVariable("userName") String userName) {
     try {
@@ -49,7 +50,7 @@ public class UserController {
     }
   }
 
-
+  @CrossOrigin(origins = PLUS1_FRONTEND_API)
   @PutMapping("/updateHeightByUserID/{userID}/{newHeight}")
   public String updateNewHeightByUserID(@PathVariable("userID") Long UserID, @PathVariable("newHeight") Double newHeight) {
     User userToUpdate = userService.getUserById(UserID);
@@ -62,6 +63,7 @@ public class UserController {
     }
   }
 
+  @CrossOrigin(origins = PLUS1_FRONTEND_API)
   @PutMapping("/updateWeightByUserID/{userID}/{newWeight}")
   public String updateNewWeightByUserID(@PathVariable("userID") Long UserID, @PathVariable("newWeight") Double newWeight) {
     User userToUpdate = userService.getUserById(UserID);
@@ -73,6 +75,5 @@ public class UserController {
       return "Sorry, User not found";
     }
   }
-
 
 }

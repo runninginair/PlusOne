@@ -7,16 +7,12 @@ import com.example.services.UserService;
 import java.sql.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class ActivityController {
 
-//    @Autocwired
-////    ActivityRepository ativityRepository;
+    public static final String PLUS1_FRONTEND_API = "http://localhost:3000";
 
     @Autowired
     ActivityService activityService = new ActivityService();
@@ -24,14 +20,8 @@ public class ActivityController {
     @Autowired
     UserService userService = new UserService();
 
-//    @GetMapping("/activity/{uid}")
-//    public Activity plusOne(@PathVariable("uid") long uid){
-//        System.out.println(uid);
-////        Activity activity = activityRepository.findById(uid).get();
-//        Activity activity = activityService.getActivityById(uid);
-//        return activity;
-//    }
 
+    @CrossOrigin(origins = PLUS1_FRONTEND_API)
     @GetMapping("/activities/{uid}/date/{date}")
     public List<Activity> getActivitiesByUserIdAndDate(@PathVariable("uid") long uid, @PathVariable("date") String date){
         System.out.println("uid = " + uid + ", date = " + date);
@@ -45,6 +35,7 @@ public class ActivityController {
      * @param dateString
      * @param activityName
      */
+    @CrossOrigin(origins = PLUS1_FRONTEND_API)
     @PostMapping("/activity/create/{userid}/date/{date}/name/{name}")
     public boolean createActivity(@PathVariable("userid") long uid, @PathVariable("date") String dateString, @PathVariable("name") String activityName){
 //        System.out.println("uid = " + uid + ", date = " + date);
@@ -63,16 +54,16 @@ public class ActivityController {
         return true;
     }
 
-
+    @CrossOrigin(origins = PLUS1_FRONTEND_API)
     @GetMapping("/activity/getDistanceByTimeRange/{userId}/{start}/{end}")
     public double getDistanceByTimeRange(@PathVariable("userId")Long userId, @PathVariable("start")Date start, @PathVariable("end")Date end){
         return activityService.getDistanceByTimeRange(userId,start,end);
     }
 
+    @CrossOrigin(origins = PLUS1_FRONTEND_API)
     @GetMapping("/activity/getCaloriesByTimeRange/{userId}/{start}/{end}")
     public double getCaloriesByTimeRange(@PathVariable("userId")Long userId, @PathVariable("start")Date start, @PathVariable("end")Date end){
         return activityService.getCaloriesByTimeRange(userId,start,end);
     }
-
 
 }
