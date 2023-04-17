@@ -25,7 +25,7 @@ public class ActivityController {
     @GetMapping("/activities/{uid}/date/{date}")
     public List<Activity> getActivitiesByUserIdAndDate(@PathVariable("uid") long uid, @PathVariable("date") String date){
         System.out.println("uid = " + uid + ", date = " + date);
-        System.out.println("github action test");
+        System.out.println("github action test 2nd");
         List<Activity> activities = activityService.getActivitiesByDay(uid, Date.valueOf(date));
         return activities;
     }
