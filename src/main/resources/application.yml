@@ -1,13 +1,36 @@
+#spring:
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    show-sql: true
+#  datasource:
+#    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/${DB_NAME:plusone}
+#    username: ${DB_USERNAME:root}
+##    password: ${DB_PASSWORD:JasonKim891214}
+#    password: ${DB_PASSWORD:coco1004}
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#  servlet:
+#    multipart:
+#      max-request-size: 50MB
+#      max-file-size: 40MB
+
+
 spring:
   jpa:
     hibernate:
       ddl-auto: update
     show-sql: true
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/${DB_NAME:plusone}
-    username: ${DB_USERNAME:root}
-#    password: ${DB_PASSWORD:JasonKim891214}
-    password: ${DB_PASSWORD:coco1004}
+    url: "jdbc:mysql://us-cdbr-east-06.cleardb.net:3306/heroku_6a8e7fa6e0bb8f0"
+    username:b3164ec35cc34e
+    password:ac5d30be
+    hikari:
+      max-lifetime: 20000
+    #url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/${DB_NAME:PlusOne}
+    #username: ${DB_USERNAME:root}
+    #    password: ${DB_PASSWORD:JasonKim891214}
+    #password: ${DB_PASSWORD:password}
+
     driver-class-name: com.mysql.cj.jdbc.Driver
   servlet:
     multipart:
