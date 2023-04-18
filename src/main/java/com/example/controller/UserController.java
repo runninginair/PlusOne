@@ -8,7 +8,14 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class UserController {
-  public static final String PLUS1_FRONTEND_API = "http://localhost:3000";
+
+  /** For local frontend app */
+  // public static final String PLUS1_FRONTEND_API = "http://localhost:3000";
+
+  /**
+   * For remote frontend app
+   */
+  public static final String PLUS1_FRONTEND_API = "https://plusone-frontend.herokuapp.com";
 
   @Autowired
   UserService userService = new UserService();
@@ -54,11 +61,10 @@ public class UserController {
   @PutMapping("/updateHeightByUserID/{userID}/{newHeight}")
   public String updateNewHeightByUserID(@PathVariable("userID") Long UserID, @PathVariable("newHeight") Double newHeight) {
     User userToUpdate = userService.getUserById(UserID);
-    if (userToUpdate != null){
+    if (userToUpdate != null) {
       userService.updateHeight(UserID, newHeight);
       return "User height updated successfully";
-    }
-    else{
+    } else {
       return "User not found";
     }
   }
@@ -67,11 +73,10 @@ public class UserController {
   @PutMapping("/updateWeightByUserID/{userID}/{newWeight}")
   public String updateNewWeightByUserID(@PathVariable("userID") Long UserID, @PathVariable("newWeight") Double newWeight) {
     User userToUpdate = userService.getUserById(UserID);
-    if (userToUpdate != null){
+    if (userToUpdate != null) {
       userService.updateWeight(UserID, newWeight);
       return "User weight updated successfully";
-    }
-    else{
+    } else {
       return "Sorry, User not found";
     }
   }

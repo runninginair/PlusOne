@@ -71,42 +71,42 @@ class ActivityControllerTest {
     }
 
 
-//    @Test
-//    public void createActivityWithExistingUser() {
-//        User user = new User(1l);
-//        Activity activity = new Activity(user, Date.valueOf("2013-02-09"), "running");
-//
-//        ActivityService activityService = mock(ActivityService.class);
-//        doNothing().when(activityService).saveActivity(activity);
-//
-//        Activity createdActivity = activityController.create(activity).getBody();
-//
-//        assertEquals(activity, createdActivity);
-//    }
+    @Test
+    public void createActivityWithExistingUser() {
+        User user = new User(1l);
+        Activity activity = new Activity(user, Date.valueOf("2013-02-09"), "running");
 
-//    @Test
-//    public void createActivityWithNonExistingUser() {
-//        User user = new User();
-//        user.setUserId(1L);
-//
-//        // create an activity object
-//        Activity activity = new Activity();
-//        activity.setUserId(user);
-//        activity.setDate(new Date(new GregorianCalendar(2023, Calendar.MARCH, 22).getTimeInMillis()));
-//        activity.setActivityName("Test activity");
-//
-//        // mock the getUserById method of the UserService to return null
-//        when(userService.getUserById(user.getUserId())).thenReturn(null);
-//
-//        // call the create method of the ActivityController
-//        ResponseEntity<Activity> responseEntity = activityController.create(activity);
-//
-//        // assert that the status code of the response is HttpStatus.BAD_REQUEST
-//        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
-//
-//        // assert that the activity object returned by the create method is the same as the activity object passed as parameter
-//        assertEquals(activity, responseEntity.getBody());
-//    }
+        ActivityService activityService = mock(ActivityService.class);
+        doNothing().when(activityService).saveActivity(activity);
+
+        Activity createdActivity = activityController.createActivity(activity).getBody();
+
+        assertEquals(activity, createdActivity);
+    }
+
+    @Test
+    public void createActivityWithNonExistingUser() {
+        User user = new User();
+        user.setUserId(1L);
+
+        // create an activity object
+        Activity activity = new Activity();
+        activity.setUserId(user);
+        activity.setDate(new Date(new GregorianCalendar(2023, Calendar.MARCH, 22).getTimeInMillis()));
+        activity.setActivityName("Test activity");
+
+        // mock the getUserById method of the UserService to return null
+        when(userService.getUserById(user.getUserId())).thenReturn(null);
+
+        // call the create method of the ActivityController
+        ResponseEntity<Activity> responseEntity = activityController.createActivity(activity);
+
+        // assert that the status code of the response is HttpStatus.BAD_REQUEST
+        assertEquals(HttpStatus.BAD_REQUEST, responseEntity.getStatusCode());
+
+        // assert that the activity object returned by the create method is the same as the activity object passed as parameter
+        assertEquals(activity, responseEntity.getBody());
+    }
 
     @Test
     public void getDistanceByTimeRange() {

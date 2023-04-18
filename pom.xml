@@ -15,6 +15,7 @@
   <name>demo1</name>
   <description>demo1</description>
   <properties>
+    <!--    <java.version>19</java.version>-->
     <java.version>17</java.version>
   </properties>
   <dependencies>
@@ -32,8 +33,6 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-web-services</artifactId>
     </dependency>
-
-
 
     <dependency>
       <groupId>org.springframework.boot</groupId>
@@ -56,24 +55,20 @@
       <version>4.13.2</version>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
       <version>5.8.1</version>
       <scope>test</scope>
     </dependency>
+
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
       <version>5.8.1</version>
       <scope>test</scope>
     </dependency>
-<!--    <dependency>-->
-<!--      <groupId>org.junit.jupiter</groupId>-->
-<!--      <artifactId>junit-jupiter-engine</artifactId>-->
-<!--      <version>5.8.0</version>-->
-<!--      <scope>test</scope>-->
-<!--    </dependency>-->
 
     <dependency>
       <groupId>org.mockito</groupId>
@@ -83,12 +78,15 @@
     </dependency>
   </dependencies>
 
+
   <build>
     <plugins>
+
       <plugin>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-maven-plugin</artifactId>
       </plugin>
+
       <plugin>
         <groupId>org.jacoco</groupId>
         <artifactId>jacoco-maven-plugin</artifactId>
@@ -109,46 +107,8 @@
         </executions>
       </plugin>
 
-<!--  New plugin added for connecting Node.js frontend.   Editor: Jinz Apr14 2023-->
-<!--      <plugin>-->
-<!--        <groupId>com.github.eirslett</groupId>-->
-<!--        <artifactId>frontend-maven-plugin</artifactId>-->
-<!--        <version>1.11.2</version>-->
-<!--        <executions>-->
-<!--              <execution>-->
-<!--                <id>install node and npm</id>-->
-<!--                <goals>-->
-<!--                  <goal>install-node-and-npm</goal>-->
-<!--                </goals>-->
-<!--                <configuration>-->
-<!--                  <nodeVersion>v14.16.1</nodeVersion>-->
-<!--                  <npmVersion>6.14.12</npmVersion>-->
-<!--                </configuration>-->
-<!--              </execution>-->
-<!--              <execution>-->
-<!--                <id>npm install</id>-->
-<!--                <goals>-->
-<!--                  <goal>npm</goal>-->
-<!--                </goals>-->
-<!--                <configuration>-->
-<!--                  <arguments>install</arguments>-->
-<!--                </configuration>-->
-<!--              </execution>-->
-<!--              <execution>-->
-<!--                <id>npm test</id>-->
-<!--                <goals>-->
-<!--                  <goal>npm</goal>-->
-<!--                </goals>-->
-<!--                <configuration>-->
-<!--                  <arguments>test</arguments>-->
-<!--                </configuration>-->
-<!--              </execution>-->
-<!--            </executions>-->
-<!--      </plugin>-->
 
     </plugins>
   </build>
-
-
 
 </project>
