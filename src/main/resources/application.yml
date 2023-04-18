@@ -1,3 +1,4 @@
+### For local DataBase connection
 #spring:
 #  jpa:
 #    hibernate:
@@ -21,9 +22,9 @@ spring:
       ddl-auto: update
     show-sql: true
   datasource:
-    url: "jdbc:mysql://us-cdbr-east-06.cleardb.net:3306/heroku_6a8e7fa6e0bb8f0"
-    username:b3164ec35cc34e
-    password:ac5d30be
+    url: jdbc:mysql://us-cdbr-east-06.cleardb.net:3306/heroku_6a8e7fa6e0bb8f0
+    username: b3164ec35cc34e
+    password: ac5d30be
     hikari:
       max-lifetime: 20000
     #url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/${DB_NAME:PlusOne}
