@@ -9,6 +9,9 @@ import java.sql.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -39,28 +42,36 @@ public class ActivityController {
 
     /**
      * create a new activity by userid, date, activity name
-     *
-     * @param uid
-     * @param dateString
-     * @param activityName
      */
     @CrossOrigin(origins = PLUS1_FRONTEND_API)
-    @PostMapping("/activity/create/{userid}/date/{date}/name/{name}")
-    public boolean createActivity(@PathVariable("userid") long uid, @PathVariable("date") String dateString, @PathVariable("name") String activityName) {
-//        System.out.println("uid = " + uid + ", date = " + date);
-        User user = userService.getUserById(uid);
+    @PostMapping(path = "/activities", consumes = MediaType.APPLICATION_JSON_VALUE, produces = {
+        MediaType.APPLICATION_JSON_VALUE,
+        MediaType.APPLICATION_XML_VALUE})
+    public ResponseEntity<Activity> createActivity(@RequestBody Activity activity) {
+        User user = userService.getUserById(activity.getUserId().getUserId());
+//        System.out.println("user:" + user + " date =" + activity.getDate() + " name:" + activity.getActivityName());
         if (user == null) {
-            return false;
+            return new ResponseEntity<>(activity, HttpStatus.BAD_REQUEST);
         }
-        try {
-            Date date = Date.valueOf(dateString);
-            Activity activity = new Activity(user, date, activityName);
-            activityService.saveActivity(activity);
-        } catch (IllegalArgumentException e) {
-            System.out.println("Invalid date format: " + dateString);
-            return false;
-        }
-        return true;
+        activityService.saveActivity(activity);
+        return new ResponseEntity<>(activity, HttpStatus.CREATED);
+
+//    @PostMapping("/activity/create/{userid}/date/{date}/name/{name}")
+//    public boolean createActivity(@PathVariable("userid") long uid, @PathVariable("date") String dateString, @PathVariable("name") String activityName) {
+        //        System.out.println("uid = " + uid + ", date = " + date);
+//        User user = userService.getUserById(uid);
+//        if (user == null) {
+//            return false;
+//        }
+//        try {
+//            Date date = Date.valueOf(dateString);
+//            Activity activity = new Activity(user, date, activityName);
+//            activityService.saveActivity(activity);
+//        } catch (IllegalArgumentException e) {
+//            System.out.println("Invalid date format: " + dateString);
+//            return false;
+//        }
+//        return true;
     }
 
     @CrossOrigin(origins = PLUS1_FRONTEND_API)
