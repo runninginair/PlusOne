@@ -45,13 +45,70 @@ class UserServiceTest {
 
     @Test
     void getUserByUsername() {
-        when(userRepository.getUserByUserName("testuser")).thenReturn(user);
+        when(userRepository.getUserByUserName("testUser")).thenReturn(user);
 
-        User result = userService.getUserByUsername("testuser");
+        User result = userService.getUserByUsername("testUser");
 
         assertEquals(user, result);
-        verify(userRepository).getUserByUserName("testuser");
+        verify(userRepository).getUserByUserName("testUser");
     }
 
-    // You can continue writing tests for other methods in the same way.
+    @Test
+    public void testGetUserById() {
+        Long userId = 1L;
+        User user = new User(userId, "password", "username", 1);
+        when(userRepository.findById(userId)).thenReturn(Optional.of(user));
+
+        User result = userService.getUserById(userId);
+
+        assertEquals(user, result);
+    }
+
+    @Test
+    public void testGetUserByUsername() {
+        String username = "username";
+        User user = new User(1L, "password", username, 1);
+        when(userRepository.getUserByUserName(username)).thenReturn(user);
+
+        User result = userService.getUserByUsername(username);
+
+        assertEquals(user, result);
+    }
+
+    @Test
+    public void testSaveUser() {
+        User user = new User(1L, "password", "username", 1);
+        userService.saveUser(user);
+
+        verify(userRepository, times(1)).save(user);
+    }
+
+    @Test
+    public void testDeleteUser() {
+        String userName = "username";
+        when(userRepository.deleteUserByUserName(userName)).thenReturn(1);
+
+        int result = userService.deleteUser(userName);
+
+        assertEquals(1, result);
+    }
+
+    @Test
+    public void testUpdateHeight() {
+        Long userId = 1L;
+        Double newHeight = 180.0;
+        userService.updateHeight(userId, newHeight);
+
+        verify(userRepository, times(1)).updateUserHeight(userId, newHeight);
+    }
+
+    @Test
+    public void testUpdateWeight() {
+        Long userId = 1L;
+        Double newWeight = 70.0;
+        userService.updateWeight(userId, newWeight);
+
+        verify(userRepository, times(1)).updateUserWeight(userId, newWeight);
+    }
+
 }
