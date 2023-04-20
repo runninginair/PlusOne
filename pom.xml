@@ -7,7 +7,7 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.0.2</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
     <groupId>com.example</groupId>
     <artifactId>demo1</artifactId>
@@ -15,8 +15,7 @@
     <name>demo1</name>
     <description>demo1</description>
     <properties>
-        <java.version>19</java.version>
-        <!--    <java.version>17</java.version>-->
+        <java.version>17</java.version>
     </properties>
     <dependencies>
         <dependency>
@@ -106,8 +105,6 @@
                     </execution>
                 </executions>
             </plugin>
-
-
         </plugins>
     </build>
 
