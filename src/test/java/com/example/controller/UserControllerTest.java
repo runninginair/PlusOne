@@ -29,6 +29,7 @@ class UserControllerTest {
         user.setUserId(1L);
         user.setUserName("testuser");
         user.setHeight(170.0);
+        user.setWeight(88.88);
     }
 
     @Test
@@ -68,6 +69,16 @@ class UserControllerTest {
         String result = userController.updateNewHeightByUserID(1L, 180.0);
 
         assertEquals("User height updated successfully", result);
+        verify(userService).getUserById(1L);
+    }
+
+    @Test
+    void updateNewWeightByUserID() {
+        when(userService.getUserById(1L)).thenReturn(user);
+
+        String result = userController.updateNewWeightByUserID(1L, 88.8);
+
+        assertEquals("User weight updated successfully", result);
         verify(userService).getUserById(1L);
     }
 }

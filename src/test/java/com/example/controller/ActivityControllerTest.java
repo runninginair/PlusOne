@@ -126,50 +126,22 @@ class ActivityControllerTest {
 
     }
 
-//@ExtendWith(MockitoExtension.class)
-//class ActivityControllerTest {
-//
-//    @Mock
-//    private ActivityService activityService;
-//
-//    @Mock
-//    private UserService userService;
-//
-//    @InjectMocks
-//    private ActivityController activityController;
-//
-//    private MockMvc mockMvc;
-//
-//    @BeforeEach
-//    void setUp() {
-//        mockMvc = MockMvcBuilders.standaloneSetup(activityController).build();
-//    }
-//
-//    @Test
-//    void getActivitiesByUserIdAndDate() throws Exception {
-//        // Arrange
-//        long uid = 1L;
-//        String date = "2023-01-01";
-//        Date sqlDate = Date.valueOf(date);
-//        User user = new User();
-//        user.setUserId(uid);
-//        Activity activity1 = new Activity(user, sqlDate, "Running");
-//        Activity activity2 = new Activity(user, sqlDate, "Swimming");
-//        List<Activity> activities = Arrays.asList(activity1, activity2);
-//
-//        when(userService.getUserById(uid)).thenReturn(user);
-//        when(activityService.getActivitiesByDay(uid, sqlDate)).thenReturn(activities);
-//
-//        // Act & Assert
-//        mockMvc.perform(get("/activities/{uid}/date/{date}", uid, date)
-//                        .contentType(MediaType.APPLICATION_JSON))
-//                .andExpect(status().isOk())
-//                .andExpect(jsonPath("$[0].activityName").value("Running"))
-//                .andExpect(jsonPath("$[1].activityName").value("Swimming"));
-//
-//        verify(userService, times(1)).getUserById(uid);
-//        verify(activityService, times(1)).getActivitiesByDay(uid, sqlDate);
-//    }
+    @Test
+    public void getCaloriesByTimeRange() {
+        Long userId = 1l;
+        Date start = Date.valueOf("2023-02-10");
+        Date end = Date.valueOf("2023-02-11");
 
-    // Add more test methods for other ActivityController methods
+        double mockTotalDistance = 0.0;
+        Mockito.when(activityService.getCaloriesByTimeRange(userId, start,end)).thenReturn(mockTotalDistance);
+
+        // Call the method to be tested
+        double total = activityController.getCaloriesByTimeRange(userId, start, end);
+
+        // Verify the result
+        assertEquals(mockTotalDistance, total, 2);
+        Mockito.verify(activityService).getCaloriesByTimeRange(userId, start,end);
+
+    }
+
 }
