@@ -89,50 +89,24 @@ Here are some endpoints you can call:
 http://localhost:8080/
 ```
 
-### Create a hotel resource
 
-```
-POST /example/v1/hotels
-Accept: application/json
-Content-Type: application/json
+# Retrieve the project's data with MySQL Workbench
 
-{
-"name" : "Beds R Us",
-"description" : "Very basic, small rooms but clean",
-"city" : "Santa Ana",
-"rating" : 2
-}
+This project uses an in-memory database so that you don't have to install a database in order to run it. 
 
-RESPONSE: HTTP 201 (Created)
-Location header: http://localhost:8090/example/v1/hotels/1
-```
+Here is what you would do to back the services with MySQL WorkBench, for example:
 
-### Retrieve a paginated list of hotels
-
-```
-http://localhost:8090/example/v1/hotels?page=0&size=10
-
-Response: HTTP 200
-Content: paginated list 
-```
-
-
-
-
-
-# Running the project with MySQL
-
-This project uses an in-memory database so that you don't have to install a database in order to run it. However, converting it to run with another relational database such as MySQL or PostgreSQL is very easy. Since the project uses Spring Data and the Repository pattern, it's even fairly easy to back the same service with MongoDB.
-
-Here is what you would do to back the services with MySQL, for example:
+1. Create a new MySQL Connection;
+2. Username: b31164ec35cc34e     Hostname: us-cdbr-eat-06.cleardb.net    Port: 3306   
+3. Test Connection, once it connects well. click "OK".
 
 ### In pom.xml add:
 
 ```
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
+   <dependency>
+     <groupId>com.mysql</groupId>
+     <artifactId>mysql-connector-j</artifactId>
+   </dependency>
 ```
 
 ### Append this to the end of application.yml:
@@ -160,12 +134,6 @@ spring:
       max-request-size: 50MB
       max-file-size: 40MB
 ```
-
-### An authorized frontend is a React application, the repo's url is here (For more info about the frontend please also refer to the URL):
-```
-https://github.com/runninginair/Plus1-APP
-```
-
 
 ## Postman test RESTFul APIs
 
@@ -209,6 +177,12 @@ https://plusone-backend.herokuapp.com/updateHeightByUserID/4/76.5
 ```agsl
 https://plusone-backend.herokuapp.com/updateWeightByUserID/4/99.99
 ```
+
+### An authorized frontend is a React application, the repo's url is here (For more info about the frontend please also refer to the URL):
+```
+https://github.com/runninginair/Plus1-APP
+```
+
 
 ## Deployed frontend and backend urls
 ```
