@@ -10,40 +10,51 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * The type Activity service.
+ */
 @Service
 public class ActivityService {
-    @Autowired
-    private ActivityRepository activityRepository;
+  @Autowired
+  private ActivityRepository activityRepository;
 
-    @Autowired
-    private UserRepository userRepository;
+  @Autowired
+  private UserRepository userRepository;
 
-    public Activity getActivityById(long uid) {
-        return activityRepository.findById(uid).get();
-    }
-    public List<Activity> getActivitiesByDay(long uid, Date date) {
-        User user = userRepository.findById(uid).orElse(null); // Assuming you have a UserRepository
-        List<Activity> activities = new ArrayList<>();
-        if (user != null) {
-            activities = activityRepository.findByUserIdAndDate(user, date);
-        }
-        return activities;
-    }
+  public Activity getActivityById(long uid) {
+    return activityRepository.findById(uid).get();
+  }
 
-    public List<Activity> getAllActivities() {
-        return (List<Activity>) activityRepository.findAll();
+  /**
+   * Gets activities by day.
+   *
+   * @param uid  the uid
+   * @param date the date
+   * @return the activities by day
+   */
+  public List<Activity> getActivitiesByDay(long uid, Date date) {
+    User user = userRepository.findById(uid).orElse(null); // Assuming you have a UserRepository
+    List<Activity> activities = new ArrayList<>();
+    if (user != null) {
+      activities = activityRepository.findByUserIdAndDate(user, date);
     }
+    return activities;
+  }
 
-    public void saveActivity(Activity activity) {
-        activityRepository.save(activity);
-    }
+  public List<Activity> getAllActivities() {
+    return (List<Activity>) activityRepository.findAll();
+  }
 
-    public double getDistanceByTimeRange(Long userId, Date start, Date end){
-        return activityRepository.getDistanceByTimeRange(userId,start,end);
-    }
+  public void saveActivity(Activity activity) {
+    activityRepository.save(activity);
+  }
 
-    public double getCaloriesByTimeRange(Long userId, Date start, Date end){
-        return activityRepository.getCaloriesByTimeRange(userId,start,end);
-    }
+  public double getDistanceByTimeRange(Long userId, Date start, Date end) {
+    return activityRepository.getDistanceByTimeRange(userId, start, end);
+  }
+
+  public double getCaloriesByTimeRange(Long userId, Date start, Date end) {
+    return activityRepository.getCaloriesByTimeRange(userId, start, end);
+  }
 
 }
