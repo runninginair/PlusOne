@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
   // For local frontend app
-  // public static final String PLUS1_FRONTEND_API = "http://localhost:3000";
+   public static final String PLUS1_FRONTEND_API = "http://localhost:3000";
 
   /**
    * For remote frontend app.
    */
-  public static final String PLUS1_FRONTEND_API = "https://plusone-frontend.herokuapp.com";
+//  public static final String PLUS1_FRONTEND_API = "https://plusone-frontend.herokuapp.com";
 
   @Autowired
   UserService userService = new UserService();
@@ -29,7 +29,8 @@ public class UserController {
    * @return the user
    */
   @CrossOrigin(origins = PLUS1_FRONTEND_API)
-  @GetMapping("/user/{uid}")
+//  @GetMapping("/user/{uid}")
+  @GetMapping("/users/id/{uid}")
   public User plusOne(@PathVariable("uid") long userId) {
     User user = userService.getUserById(userId);
     return user;
@@ -42,7 +43,8 @@ public class UserController {
    * @return the string
    */
   @CrossOrigin(origins = PLUS1_FRONTEND_API)
-  @DeleteMapping("/deleteUserByUserName/{userName}")
+//  @DeleteMapping("/deleteUserByUserName/{userName}")
+  @DeleteMapping("/users/name/{userName}")
   public String deleteUser(@PathVariable("userName") String userName) {
     try {
       int num = userService.deleteUser(userName);
@@ -63,7 +65,8 @@ public class UserController {
    * @return the string
    */
   @CrossOrigin(origins = PLUS1_FRONTEND_API)
-  @GetMapping("/getUserByUsername/{userName}")
+//  @GetMapping("/getUserByUsername/{userName}")
+  @GetMapping("/users/name/{userName}")
   public String getUserByUsername(@PathVariable("userName") String userName) {
     try {
       User user = userService.getUserByUsername(userName);
@@ -85,7 +88,8 @@ public class UserController {
    * @return the string
    */
   @CrossOrigin(origins = PLUS1_FRONTEND_API)
-  @PutMapping("/updateHeightByUserID/{userID}/{newHeight}")
+//  @PutMapping("/updateHeightByUserID/{userID}/{newHeight}")
+  @PutMapping("/users/id/{userID}/height/{newHeight}")
   public String updateNewHeightByUserID(@PathVariable("userID") Long userId,
                                         @PathVariable("newHeight") Double newHeight) {
     User userToUpdate = userService.getUserById(userId);
@@ -105,7 +109,8 @@ public class UserController {
    * @return the string
    */
   @CrossOrigin(origins = PLUS1_FRONTEND_API)
-  @PutMapping("/updateWeightByUserID/{userID}/{newWeight}")
+//  @PutMapping("/updateWeightByUserID/{userID}/{newWeight}")
+  @PutMapping("/users/id/{userID}/weight/{newWeight}")
   public String updateNewWeightByUserID(@PathVariable("userID") Long userId,
                                         @PathVariable("newWeight") Double newWeight) {
     User userToUpdate = userService.getUserById(userId);
