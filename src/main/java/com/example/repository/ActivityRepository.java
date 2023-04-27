@@ -21,7 +21,7 @@ public interface ActivityRepository extends CrudRepository<Activity, Long> {
   @Transactional
   @Query(nativeQuery = true,
           value = "select sum(distance) from activity"
-                  + "a where a.user_id = :userId and a.date between :start and :end")
+                  + " a where a.user_id = :userId and a.date between :start and :end")
   public double getDistanceByTimeRange(@Param("userId") Long userId,
                                        @Param("start") Date start,
                                        @Param("end") Date end);
@@ -29,7 +29,7 @@ public interface ActivityRepository extends CrudRepository<Activity, Long> {
   @Transactional
   @Query(nativeQuery = true,
           value = "select sum(calories) from activity"
-                  + "a where a.user_id = :userId and a.date between :start and :end")
+                  + " a where a.user_id = :userId and a.date between :start and :end")
   public double getCaloriesByTimeRange(@Param("userId") Long userId,
                                        @Param("start") Date start,
                                        @Param("end") Date end);
