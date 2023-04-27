@@ -1,6 +1,7 @@
 # PlusOne 
 
 Welcome to our project! This Spring Boot application provide workout track and evaluation services. 
+* Team members: Tao Jin, Meng Wang, Mingyang Wang, Jin Zhang
 
 ## Architecture
 
@@ -185,6 +186,30 @@ spring:
       max-request-size: 50MB
       max-file-size: 40MB
 ```
+
+## Code/Test metrics summary
+
+### 1. API testing by Postman
+All APIs passed Postman test, here is one sample of testing snap shot about “Get user by Username”:
+![postman](./image/postman.png)
+
+### 2. Code Metrics by CodeMR
+
+![codeMR-QA](./image/codeMR-QA.png)
+![codeMR-sunburst](./image/codeMR-Sunburst.png)
+![codeMR-values by package](./image/codeMR-ValuesbyPackages.png)
+![codeMR-MetricValues](./image/codeMR-4MetricValues.png)
+![codeMR-package](./image/codeMR-5Package.png)
+![codeMR-table](./image/codeMR-6table.png)
+
+### 3. JUnit test by JaCoco
+![Jacoco-1](./image/Jacoco-1.png)
+![Jacoco-2](./image/Jacoco-2.png)
+
+## CI Pipeline
+The code will be automatically built and test when there is push action on master branch.
+![CI pipeline-1](./image/CIpipeline-1.png)
+![CI pipeline-2](./image/CIpipeline-2.png)
 
 
 
