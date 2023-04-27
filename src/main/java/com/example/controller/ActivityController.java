@@ -19,12 +19,12 @@ import org.springframework.web.bind.annotation.*;
 public class ActivityController {
 
   // For local frontend app use following API
-  // public static final String PLUS1_FRONTEND_API = "http://localhost:3000";
+   public static final String PLUS1_FRONTEND_API = "http://localhost:3000";
 
   /**
    * For remote (Heroku) frontend app.
    */
-  public static final String PLUS1_FRONTEND_API = "https://plusone-frontend.herokuapp.com";
+//  public static final String PLUS1_FRONTEND_API = "https://plusone-frontend.herokuapp.com";
 
   @Autowired
   ActivityService activityService = new ActivityService();

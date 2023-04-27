@@ -12,12 +12,12 @@ import org.springframework.web.bind.annotation.*;
 public class UserController {
 
   // For local frontend app
-  // public static final String PLUS1_FRONTEND_API = "http://localhost:3000";
+   public static final String PLUS1_FRONTEND_API = "http://localhost:3000";
 
   /**
    * For remote frontend app.
    */
-  public static final String PLUS1_FRONTEND_API = "https://plusone-frontend.herokuapp.com";
+//  public static final String PLUS1_FRONTEND_API = "https://plusone-frontend.herokuapp.com";
 
   @Autowired
   UserService userService = new UserService();
