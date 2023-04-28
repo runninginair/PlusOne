@@ -74,7 +74,8 @@ public class ActivityController {
    * @return the distance by time range
    */
   @CrossOrigin(origins = PLUS1_FRONTEND_API)
-  @GetMapping("/activity/getDistanceByTimeRange/{userId}/{start}/{end}")
+//  @GetMapping("/activity/getDistanceByTimeRange/{userId}/{start}/{end}")
+  @GetMapping("/activities/user/{userId}/distance/start/{start}/end/{end}")
   public double getDistanceByTimeRange(@PathVariable("userId") Long userId,
                                        @PathVariable("start") Date start,
                                        @PathVariable("end") Date end) {
@@ -90,7 +91,8 @@ public class ActivityController {
    * @return the calories by time range
    */
   @CrossOrigin(origins = PLUS1_FRONTEND_API)
-  @GetMapping("/activity/getCaloriesByTimeRange/{userId}/{start}/{end}")
+//  @GetMapping("/activity/getCaloriesByTimeRange/{userId}/{start}/{end}")
+  @GetMapping("/activities/user/{userId}/calories/start/{start}/end/{end}")
   public double getCaloriesByTimeRange(@PathVariable("userId") Long userId,
                                        @PathVariable("start") Date start,
                                        @PathVariable("end") Date end) {
